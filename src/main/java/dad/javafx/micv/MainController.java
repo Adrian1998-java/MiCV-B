@@ -13,6 +13,8 @@ import com.google.gson.Gson;
 
 import dad.javafx.micv.model.CV;
 import dad.javafx.micv.personal.PersonalController;
+import dad.javafx.micv.contacto.contactoController;
+import dad.javafx.micv.formacion.formacionController;
 import dad.javafx.micv.utils.JSONUtils;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -21,6 +23,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
@@ -31,6 +35,8 @@ public class MainController implements Initializable {
 	// controllers
 	
 	private PersonalController personalController = new PersonalController();
+	private contactoController contactoController = new contactoController();
+	private formacionController formacionController = new formacionController();
 	
 	// model
 	
@@ -70,6 +76,8 @@ public class MainController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 
 		personalTab.setContent(personalController.getView());
+		contactoTab.setContent(contactoController.getView());
+		formacionTab.setContent(formacionController.getView());
 		
 		cv.addListener((o, ov, nv) -> onCVChanged(o, ov, nv));
 		
@@ -83,13 +91,16 @@ public class MainController implements Initializable {
     		
     		personalController.personalProperty().unbind(); // desbindeo personalProperty del CV anterior
     		// desbindear resto de controllers
-    		
+    		contactoController.personalProperty().unbind();
+    		formacionController.personalProperty().unbind();
     	}
 
     	if (nv != null) {
     		
     		personalController.personalProperty().bind(nv.personalProperty()); // bindeo personalProperty del nuevo CV
     		// bindear resto de controllers
+    		contactoController.personalProperty().bind(nv.personalProperty());
+    		formacionController.personalProperty().bind(nv.personalProperty());
     		
     	}
     	
@@ -115,7 +126,12 @@ public class MainController implements Initializable {
 
     @FXML
     void onAcercaDeAction(ActionEvent event) {
+    	Alert alert = new Alert(AlertType.INFORMATION);
+    	alert.setTitle("Acerca de...");
+    	alert.setHeaderText("Escucha:");
+    	alert.setContentText("Esta es la Aplicación Mi-CV!");
 
+    	alert.showAndWait();
     }
 
     @FXML
