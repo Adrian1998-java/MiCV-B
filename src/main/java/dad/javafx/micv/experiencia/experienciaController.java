@@ -1,4 +1,4 @@
-package dad.javafx.micv.formacion;
+package dad.javafx.micv.experiencia;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -26,61 +26,61 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.fxml.Initializable;
 
-public class formacionController implements Initializable{
+public class experienciaController implements Initializable{
 	
 	//model
 	private ObjectProperty<Personal> personal = new SimpleObjectProperty<>();
 	
-    @FXML
-    private AnchorPane View;
+	@FXML
+    private AnchorPane view;
 
     @FXML
-    private TableView<?> TableView;
+    private TableView<?> tableView;
 
     @FXML
-    private TableColumn<?, ?> DesdeColumn;
+    private TableColumn<?, ?> desdeColumn;
 
     @FXML
-    private TableColumn<?, ?> HastaColumn;
+    private TableColumn<?, ?> hastaColumn;
 
     @FXML
-    private TableColumn<?, ?> DenominacionColumn;
+    private TableColumn<?, ?> denominacionColumn;
 
     @FXML
-    private TableColumn<?, ?> OrganizadorColumn;
+    private TableColumn<?, ?> empleadorColumn;
 
     @FXML
-    private Button AñadirButton;
+    private Button aniadirButton;
 
     @FXML
-    private Button EliminarButton;
+    private Button eliminarButton;
 
-    public formacionController() throws IOException {
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/FormacionView.fxml"));
+    public experienciaController() throws IOException {
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/experienciaView.fxml"));
     	loader.setController(this);
     	loader.load();
     }
     
 	public AnchorPane getView() {
-		return View;
+		return view;
 	}
-	
+    
     @FXML
-    void AñadirFormacion(ActionEvent event) {
+    void aniadir(ActionEvent event) {
 
     }
 
     @FXML
-    void EliminarFormacion(ActionEvent event) {
+    void eliminar(ActionEvent event) {
 
     }
-    
-    
+
+	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		
 	}
-
+	
 	public final ObjectProperty<Personal> personalProperty() {
 		return this.personal;
 	}

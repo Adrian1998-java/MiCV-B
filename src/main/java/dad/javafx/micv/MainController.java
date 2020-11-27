@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import dad.javafx.micv.model.CV;
 import dad.javafx.micv.personal.PersonalController;
 import dad.javafx.micv.contacto.contactoController;
+import dad.javafx.micv.experiencia.experienciaController;
 import dad.javafx.micv.formacion.formacionController;
 import dad.javafx.micv.utils.JSONUtils;
 import javafx.beans.property.ObjectProperty;
@@ -37,6 +38,7 @@ public class MainController implements Initializable {
 	private PersonalController personalController = new PersonalController();
 	private contactoController contactoController = new contactoController();
 	private formacionController formacionController = new formacionController();
+	private experienciaController experienciaController = new experienciaController();
 	
 	// model
 	
@@ -78,6 +80,7 @@ public class MainController implements Initializable {
 		personalTab.setContent(personalController.getView());
 		contactoTab.setContent(contactoController.getView());
 		formacionTab.setContent(formacionController.getView());
+		experienciaTab.setContent(experienciaController.getView());
 		
 		cv.addListener((o, ov, nv) -> onCVChanged(o, ov, nv));
 		
@@ -93,6 +96,7 @@ public class MainController implements Initializable {
     		// desbindear resto de controllers
     		contactoController.personalProperty().unbind();
     		formacionController.personalProperty().unbind();
+    		experienciaController.personalProperty().unbind();
     	}
 
     	if (nv != null) {
@@ -101,6 +105,7 @@ public class MainController implements Initializable {
     		// bindear resto de controllers
     		contactoController.personalProperty().bind(nv.personalProperty());
     		formacionController.personalProperty().bind(nv.personalProperty());
+    		experienciaController.personalProperty().bind(nv.personalProperty());
     		
     	}
     	
