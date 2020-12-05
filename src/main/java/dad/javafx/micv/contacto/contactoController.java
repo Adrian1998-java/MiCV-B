@@ -17,6 +17,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.fxml.Initializable;
 
@@ -29,10 +30,10 @@ public class contactoController implements Initializable{
     private SplitPane View;
 
     @FXML
-    private AnchorPane TelefonoPane;
+    private TitledPane telefonoPane;
 
     @FXML
-    private TitledPane TitledTelefonoPane;
+    private BorderPane borderTelefonePane;
 
     @FXML
     private TableView<?> TelefonoTableView;
@@ -50,10 +51,10 @@ public class contactoController implements Initializable{
     private Button BorrarTelefonoButton;
 
     @FXML
-    private AnchorPane DireccionesCorreoPane;
+    private TitledPane direccionesCorreoPane;
 
     @FXML
-    private TitledPane TitledCorreoPane;
+    private BorderPane borderCorreoPane;
 
     @FXML
     private TableView<?> CorreoTableView;
@@ -68,22 +69,22 @@ public class contactoController implements Initializable{
     private Button BorrarCorreoButton;
 
     @FXML
-    private AnchorPane WebsPane;
+    private TitledPane webPane;
 
     @FXML
-    private TitledPane TitledWebPane;
-
-    @FXML
-    private TableView<?> WebTableView;
-
-    @FXML
-    private TableColumn<?, ?> URLColumn;
+    private BorderPane borderWebPane;
 
     @FXML
     private Button AniadirWebButton;
 
     @FXML
     private Button BorrarWebButton;
+
+    @FXML
+    private TableView<?> WebTableView;
+
+    @FXML
+    private TableColumn<?, ?> URLColumn;
     
     
     public contactoController() throws IOException {

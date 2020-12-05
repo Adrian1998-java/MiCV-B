@@ -7,78 +7,117 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 
-<SplitPane fx:id="View" dividerPositions="0.3286384976525822, 0.6009389671361502" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane fx:id="View" dividerPositions="0.3220338983050847, 0.6652542372881356" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <items>
-    <AnchorPane fx:id="TelefonoPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-         <children>
-            <TitledPane fx:id="TitledTelefonoPane" collapsible="false" prefHeight="200.0" prefWidth="200.0" text="Teléfonos" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-               <content>
+      <TitledPane fx:id="telefonoPane" collapsible="false" prefHeight="200.0" prefWidth="200.0" text="Teléfono">
+         <content>
+            <BorderPane fx:id="borderTelefonePane" prefHeight="200.0" prefWidth="200.0">
+               <center>
                   <TableView fx:id="TelefonoTableView" prefHeight="200.0" prefWidth="200.0">
                     <columns>
                       <TableColumn fx:id="NumeroColumn" prefWidth="75.0" text="Número" />
                       <TableColumn fx:id="TipoColumn" prefWidth="75.0" text="Tipo" />
                     </columns>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="60.0" top="5.0" />
-                     </padding>
                   </TableView>
-               </content>
-            </TitledPane>
-            <Button fx:id="AniadirTelefonoButton" mnemonicParsing="false" onAction="#AniadirTelefono" text="Añadir" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="35.0">
-               <cursor>
-                  <Cursor fx:constant="SW_RESIZE" />
-               </cursor>
-            </Button>
-            <Button fx:id="BorrarTelefonoButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#BorrarTelefono" text="Borrar" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="65.0">
-               <cursor>
-                  <Cursor fx:constant="SW_RESIZE" />
-               </cursor>
-            </Button>
-         </children></AnchorPane>
-    <AnchorPane fx:id="DireccionesCorreoPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-         <children>
-            <TitledPane fx:id="TitledCorreoPane" collapsible="false" prefHeight="200.0" prefWidth="200.0" text="Direcciones de Correo" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-               <content>
-                  <TableView fx:id="CorreoTableView" prefHeight="200.0" prefWidth="200.0">
+               </center>
+               <right>
+                  <VBox fillWidth="false" prefHeight="115.0" prefWidth="65.0" spacing="5.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button fx:id="AniadirTelefonoButton" mnemonicParsing="false" onAction="#AniadirTelefono" prefWidth="75.0" text="Añadir">
+                           <cursor>
+                              <Cursor fx:constant="SW_RESIZE" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="BorrarTelefonoButton" mnemonicParsing="false" onAction="#BorrarTelefono" prefWidth="75.0" text="Borrar">
+                           <cursor>
+                              <Cursor fx:constant="SW_RESIZE" />
+                           </cursor>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+               </right>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </BorderPane>
+         </content>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </TitledPane>
+      <TitledPane fx:id="direccionesCorreoPane" collapsible="false" prefHeight="200.0" prefWidth="200.0" text="Direcciones de Correo">
+         <content>
+            <BorderPane fx:id="borderCorreoPane" prefHeight="200.0" prefWidth="200.0">
+               <center>
+                  <TableView fx:id="CorreoTableView" prefHeight="111.0" prefWidth="606.0" BorderPane.alignment="CENTER">
                     <columns>
                       <TableColumn fx:id="EmailColumn" prefWidth="75.0" text="E-mail" />
                     </columns>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="60.0" top="5.0" />
-                     </padding>
+                     <BorderPane.margin>
+                        <Insets right="5.0" />
+                     </BorderPane.margin>
                   </TableView>
-               </content>
-            </TitledPane>
-            <Button fx:id="AniadirCorreoButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#AniadirCorreo" text="Añadir" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="35.0">
-               <cursor>
-                  <Cursor fx:constant="SW_RESIZE" />
-               </cursor>
-            </Button>
-            <Button fx:id="BorrarCorreoButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#BorrarCorreo" text="Borrar" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="65.0">
-               <cursor>
-                  <Cursor fx:constant="SW_RESIZE" />
-               </cursor>
-            </Button>
-         </children></AnchorPane>
-      <AnchorPane fx:id="WebsPane" minHeight="0.0" minWidth="0.0" prefHeight="183.0" prefWidth="598.0">
-         <children>
-            <TitledPane fx:id="TitledWebPane" collapsible="false" prefHeight="200.0" prefWidth="200.0" text="Webs" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-               <content>
-                  <TableView fx:id="WebTableView" prefHeight="200.0" prefWidth="200.0">
+               </center>
+               <right>
+                  <VBox fillWidth="false" prefHeight="110.0" prefWidth="65.0" spacing="5.0">
+                     <children>
+                        <Button fx:id="AniadirCorreoButton" mnemonicParsing="false" onAction="#AniadirCorreo" prefWidth="75.0" text="Añadir">
+                           <cursor>
+                              <Cursor fx:constant="SW_RESIZE" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="BorrarCorreoButton" mnemonicParsing="false" onAction="#BorrarCorreo" prefWidth="75.0" text="Borrar">
+                           <cursor>
+                              <Cursor fx:constant="SW_RESIZE" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </VBox>
+               </right>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </BorderPane>
+         </content>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </TitledPane>
+      <TitledPane fx:id="webPane" collapsible="false" prefHeight="200.0" prefWidth="200.0" text="Web">
+         <content>
+            <BorderPane fx:id="borderWebPane" prefHeight="200.0" prefWidth="200.0">
+               <right>
+                  <VBox prefHeight="110.0" prefWidth="65.0" spacing="5.0">
+                     <children>
+                        <Button fx:id="AniadirWebButton" mnemonicParsing="false" onAction="#AniadirWeb" prefWidth="75.0" text="Añadir" />
+                        <Button fx:id="BorrarWebButton" mnemonicParsing="false" onAction="#BorrarWeb" prefWidth="75.0" text="Borrar" />
+                     </children>
+                  </VBox>
+               </right>
+               <center>
+                  <TableView fx:id="WebTableView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                     <columns>
                       <TableColumn fx:id="URLColumn" prefWidth="75.0" text="URL" />
                     </columns>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="60.0" top="5.0" />
-                     </padding>
+                     <BorderPane.margin>
+                        <Insets right="5.0" />
+                     </BorderPane.margin>
                   </TableView>
-               </content>
-            </TitledPane>
-            <Button fx:id="AniadirWebButton" mnemonicParsing="false" onAction="#AniadirWeb" text="Añadir" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="35.0" />
-            <Button fx:id="BorrarWebButton" mnemonicParsing="false" onAction="#BorrarWeb" text="Borrar" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="65.0" />
-         </children>
-      </AnchorPane>
+               </center>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </BorderPane>
+         </content>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </TitledPane>
   </items>
 </SplitPane>
