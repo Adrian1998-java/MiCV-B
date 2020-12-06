@@ -16,6 +16,7 @@ import dad.javafx.micv.personal.PersonalController;
 import dad.javafx.micv.contacto.contactoController;
 import dad.javafx.micv.experiencia.experienciaController;
 import dad.javafx.micv.formacion.formacionController;
+import dad.javafx.micv.conocimientos.conocimientosController;
 import dad.javafx.micv.utils.JSONUtils;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -33,12 +34,13 @@ import javafx.stage.FileChooser.ExtensionFilter;
 
 public class MainController implements Initializable {
 	
+	private static String pathFile = "";
 	// controllers
-	
 	private PersonalController personalController = new PersonalController();
 	private contactoController contactoController = new contactoController();
 	private formacionController formacionController = new formacionController();
 	private experienciaController experienciaController = new experienciaController();
+	private conocimientosController conocimientosController = new conocimientosController();
 	
 	// model
 	
@@ -81,6 +83,7 @@ public class MainController implements Initializable {
 		contactoTab.setContent(contactoController.getView());
 		formacionTab.setContent(formacionController.getView());
 		experienciaTab.setContent(experienciaController.getView());
+		conocimientosTab.setContent(conocimientosController.getView());
 		
 		cv.addListener((o, ov, nv) -> onCVChanged(o, ov, nv));
 		
@@ -97,6 +100,7 @@ public class MainController implements Initializable {
     		contactoController.personalProperty().unbind();
     		formacionController.personalProperty().unbind();
     		experienciaController.personalProperty().unbind();
+    		conocimientosController.personalProperty().unbind();
     	}
 
     	if (nv != null) {
@@ -106,6 +110,7 @@ public class MainController implements Initializable {
     		contactoController.personalProperty().bind(nv.personalProperty());
     		formacionController.personalProperty().bind(nv.personalProperty());
     		experienciaController.personalProperty().bind(nv.personalProperty());
+    		conocimientosController.personalProperty().bind(nv.personalProperty());
     		
     	}
     	
@@ -121,6 +126,7 @@ public class MainController implements Initializable {
     	File cvFile = fileChooser.showOpenDialog(App.getPrimaryStage());
     	if (cvFile != null) {
     		try {
+    			pathFile = cvFile.getAbsolutePath();
 				cv.set(JSONUtils.fromJson(cvFile, CV.class));
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -142,6 +148,18 @@ public class MainController implements Initializable {
     @FXML
     void onGuardarAction(ActionEvent event) {
 
+		try {
+			File cvFile = new File(pathFile);
+			if (cvFile.exists()) {
+
+				JSONUtils.toJson(cvFile, cv.get());
+
+			} else {
+				this.onGuardarComoAction(event);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
     }
 
     @FXML
@@ -155,6 +173,7 @@ public class MainController implements Initializable {
     	if (cvFile != null) {
     		
     		try {
+    			pathFile = cvFile.getAbsolutePath();
 				JSONUtils.toJson(cvFile, cv.get());
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -167,6 +186,7 @@ public class MainController implements Initializable {
     @FXML
     void onNuevoAction(ActionEvent event) {
     	System.out.println("Has pulsado nuevo");
+    	pathFile = "";
     	cv.set(new CV());
     }
 

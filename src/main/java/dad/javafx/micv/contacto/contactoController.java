@@ -8,6 +8,12 @@ import java.util.ResourceBundle;
 import dad.javafx.micv.model.Personal;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,6 +29,8 @@ import javafx.fxml.Initializable;
 
 public class contactoController implements Initializable{
 
+	private ListProperty<Titulo> formacion = new SimpleListProperty<>(FXCollections.observableArrayList());
+	
 	//model
 	private ObjectProperty<Personal> personal = new SimpleObjectProperty<>();
 	
