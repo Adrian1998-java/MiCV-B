@@ -29,7 +29,7 @@ import javafx.fxml.Initializable;
 
 public class contactoController implements Initializable{
 
-	private ListProperty<Titulo> formacion = new SimpleListProperty<>(FXCollections.observableArrayList());
+	//private ListProperty<Titulo> formacion = new SimpleListProperty<>(FXCollections.observableArrayList());
 	
 	//model
 	private ObjectProperty<Personal> personal = new SimpleObjectProperty<>();

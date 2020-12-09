@@ -12,6 +12,7 @@ import org.hildan.fxgson.FxGson;
 import com.google.gson.Gson;
 
 import dad.javafx.micv.model.CV;
+import dad.javafx.micv.model.Conocimientos;
 import dad.javafx.micv.personal.PersonalController;
 import dad.javafx.micv.contacto.contactoController;
 import dad.javafx.micv.experiencia.experienciaController;
@@ -98,9 +99,9 @@ public class MainController implements Initializable {
     		personalController.personalProperty().unbind(); // desbindeo personalProperty del CV anterior
     		// desbindear resto de controllers
     		contactoController.personalProperty().unbind();
-    		formacionController.personalProperty().unbind();
-    		experienciaController.personalProperty().unbind();
-    		conocimientosController.personalProperty().unbind();
+    		formacionController.formacionProperty().unbind();
+    		experienciaController.experienciaProperty().unbind();
+    		conocimientosController.conocimientoProperty().unbind();
     	}
 
     	if (nv != null) {
@@ -108,9 +109,9 @@ public class MainController implements Initializable {
     		personalController.personalProperty().bind(nv.personalProperty()); // bindeo personalProperty del nuevo CV
     		// bindear resto de controllers
     		contactoController.personalProperty().bind(nv.personalProperty());
-    		formacionController.personalProperty().bind(nv.personalProperty());
-    		experienciaController.personalProperty().bind(nv.personalProperty());
-    		conocimientosController.personalProperty().bind(nv.personalProperty());
+    		formacionController.formacionProperty().bind(nv.formacionProperty());
+    		experienciaController.experienciaProperty().bind(nv.experienciasProperty());
+    		conocimientosController.conocimientoProperty().bind((ObservableValue<? extends Conocimientos>) nv.conocimientosProperty());
     		
     	}
     	
